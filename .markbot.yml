@@ -41,6 +41,25 @@ js:
       - 'Location'
       - 'E-mail address'
       - 'listContacts\(peeps\);'
+  - path: 'js/contacts.js'
+    valid: true
+    bestPractices: true
+    search:
+      - 'var peeps = \['
+      - 'name\:'
+      - 'email\:'
+      - 'tel\:'
+      - 'loc\: \['
+      - 'Mercury Man'
+      - 'Venus ’Venturer'
+      - 'Jupiter Juggernaut'
+      - 'theman\@mercury\.com'
+      - 'venus\@theadventurer\.com'
+      - 'thejugger\@jupiter\.com'
+      - '\+05551234'
+      - '\+15551234'
+      - '\+55551234'
+      - '\];'
 
 screenshots:
   - path: 'index.html'
@@ -51,4 +70,16 @@ functionality:
     tests:
       - |
         if (typeof listContacts !== 'function') fail('There’s no function named `listContacts()`');
+        pass();
+      - |
+        if (!peeps) fail('The `peeps` variable doesn’t exist');
+        if (peeps.constructor !== Array) fail('The `peeps` variable isn’t an array');
+        if (peeps.length !== 3) fail('There aren’t the correct number of people in the `peeps` variable');
+        if (typeof peeps[1] !== 'object') fail('Each person inside the `peeps` variable isn’t an object')
+        if (peeps[1].name !== 'Venus ’Venturer') fail('The second person’s name doesn’t match “Venus ’Venturer”')
+        if (peeps[1].email !== 'venus@theadventurer.com') fail('The second person’s email doesn’t match “venus@theadventurer.com”')
+        if (peeps[1].tel !== '+15551234') fail('The second person’s telephone doesn’t match “+15551234”')
+        if (peeps[1].loc.constructor !== Array) fail('The second person’s location isn’t an array');
+        if (peeps[1].loc.length !== 2) fail('The second person’s location doesn’t have 2 pieces of information inside');
+
         pass();
