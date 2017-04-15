@@ -1,0 +1,54 @@
+repo: 'contact-list-generator'
+
+naming: true
+restrictFileTypes: true
+liveWebsite: true
+
+git:
+  numCommits: 2
+  allCommitted: true
+  allSynced: true
+
+html:
+  - path: 'index.html'
+    valid: true
+    bestPractices: true
+    has:
+      - 'script[src="js/contacts.js"]'
+      - 'script[src="js/main.js"]'
+      - ['script[src="js/contacts.js"] + script[src="js/main.js"]', 'The `contacts.js` file must come before the `main.js` file.']
+    hasNot:
+      - ['link', 'CSS isn’t necessary to complete this assignment']
+      - ['body :not(script)', 'The `<script>` tag should be the only tag inside `<body>` — no other HTML is needed']
+
+js:
+  - path: 'js/main.js'
+    valid: true
+    bestPractices: true
+    search:
+      - 'var listContacts = function \(contacts\) \{'
+      - 'contacts\.forEach\(function \(item\) \{'
+      - "document.write\\(\\'<h1>"
+      - "document.write\\(\\'<h2>"
+      - "document.write\\(\\'<dl>"
+      - "document.write\\(\\'<dt>"
+      - "document.write\\(\\'<\\/dl>"
+      - '\+'
+      - '<a href="tel:'
+      - '<a href="mailto:'
+      - 'km from the Sun\.'
+      - 'Between'
+      - 'Location'
+      - 'E-mail address'
+      - 'listContacts\(peeps\);'
+
+screenshots:
+  - path: 'index.html'
+    sizes: [400]
+
+functionality:
+  - path: 'index.html'
+    tests:
+      - |
+        if (typeof listContacts !== 'function') fail('There’s no function named `listContacts()`');
+        pass();
