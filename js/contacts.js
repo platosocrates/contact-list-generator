@@ -16,5 +16,11 @@ let peeps = [
         email: "thejuggler@jupiter.com",
         tel: "+55551234",
         loc: [816040000, 740550000]
+    },
+    {
+        name: "Steven Planter",
+        email: "stevenplanter@plantpeeps.org",
+        tel: "+57575757",
+        loc: [99299499,92499548]
     }
 ];

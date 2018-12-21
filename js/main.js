@@ -8,6 +8,8 @@ let listContacts = function(contacts) {
         document.write("<dd><a href='mailto:" + item.email + "'>" + item.email + "</a></dd>");
         document.write("<dt>Phone number</dt>");
         document.write("<dd><a href='tel:" + item.tel + "'>" + item.tel + "</a></dd>");
+        document.write("<dt>Location</dt>");
+        document.write("<dd>Between " + item.loc[0] + "km & " + item.loc[1] + "km from the sun.</dd>");
         document.write("</dl>");
     })
 };
